@@ -24,7 +24,7 @@ public class Evento {
 	private UUID id;
 	
 	@Column(length = 50, nullable = false)
-	private String name;
+	private String nome;
 	private String descricao;
 	
 	@Column(name = "data_inicio", columnDefinition = "TIMESTAMP")
