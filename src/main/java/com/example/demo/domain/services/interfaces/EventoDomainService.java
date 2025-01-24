@@ -23,5 +23,5 @@ public interface EventoDomainService {
 	
 	List<EventoResponseDto> consultarEventosPorStatus(String status);
 	
-	long contarEventos();
+	Integer contarEventos();
 }

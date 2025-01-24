@@ -56,7 +56,7 @@ public class EventoDomainServiceImpl implements EventoDomainService{
 	}
 
 	@Override
-	public long contarEventos() {
+	public Integer contarEventos() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
