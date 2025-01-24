@@ -1,10 +1,11 @@
 package com.example.demo.domain.models.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
 import com.example.demo.domain.models.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,11 +28,14 @@ public class Evento {
 	private String nome;
 	private String descricao;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	@Column(name = "data_inicio", columnDefinition = "TIMESTAMP")
-	private LocalDateTime dataInicio;
-	
+	private Date dataInicio;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	@Column(name = "data_fim", columnDefinition = "TIMESTAMP")
-	private LocalDateTime dataFim;
+	private Date dataFim;
+
 	
 	@Column(length = 100)
 	private String local;

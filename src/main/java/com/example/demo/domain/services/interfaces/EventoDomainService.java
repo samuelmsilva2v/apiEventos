@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import com.example.demo.application.dtos.EventoRequestDto;
 import com.example.demo.application.dtos.EventoResponseDto;
+import com.example.demo.domain.models.enums.Status;
 
 public interface EventoDomainService {
 
@@ -21,7 +22,7 @@ public interface EventoDomainService {
 	
 	List<EventoResponseDto> consultarEventosPorPeriodo(Date dataInicio, Date dataFim);
 	
-	List<EventoResponseDto> consultarEventosPorStatus(String status);
+	List<EventoResponseDto> consultarEventosPorStatus(Status status);
 	
-	Integer contarEventos();
+	long contarEventos();
 }

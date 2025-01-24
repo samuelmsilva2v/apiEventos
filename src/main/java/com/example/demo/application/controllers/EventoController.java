@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.application.dtos.EventoRequestDto;
 import com.example.demo.application.dtos.EventoResponseDto;
+import com.example.demo.domain.models.enums.Status;
 import com.example.demo.domain.services.interfaces.EventoDomainService;
 
 @RestController
@@ -56,12 +57,12 @@ public class EventoController {
 	}
 	
 	@GetMapping("/status")
-	List<EventoResponseDto> getByStatus(String status) {
+	List<EventoResponseDto> getByStatus(Status status) {
 		return eventoDomainService.consultarEventosPorStatus(status);
 	}
 	
 	@GetMapping("/count")
-	Integer count() {
+	long count() {
 		return eventoDomainService.contarEventos();
 	}
 }
