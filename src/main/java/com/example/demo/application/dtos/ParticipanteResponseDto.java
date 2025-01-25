@@ -11,5 +11,5 @@ public class ParticipanteResponseDto {
 	private String nome;
 	private String telefone;
 	private String email;
-	private UUID idEvento;
+	private EventoResponseDto evento;
 }
