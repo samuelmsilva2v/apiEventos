@@ -21,6 +21,8 @@ import com.example.demo.application.dtos.EventoResponseDto;
 import com.example.demo.domain.models.enums.Status;
 import com.example.demo.domain.services.interfaces.EventoDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/eventos")
 public class EventoController {
@@ -29,12 +31,12 @@ public class EventoController {
 	private EventoDomainService eventoDomainService;
 
 	@PostMapping
-	EventoResponseDto post(@RequestBody EventoRequestDto request) {
+	EventoResponseDto post(@Valid @RequestBody EventoRequestDto request) {
 		return eventoDomainService.cadastrarEvento(request);
 	}
 
 	@PutMapping("{id}")
-	EventoResponseDto put(@PathVariable UUID id, @RequestBody EventoRequestDto request) {
+	EventoResponseDto put(@PathVariable UUID id, @Valid @RequestBody EventoRequestDto request) {
 		return eventoDomainService.atualizarEvento(id, request);
 	}
 

@@ -18,7 +18,7 @@ public class Participante {
 	@Id
 	private UUID id;
 	
-	@Column(length = 50, nullable = false)
+	@Column(length = 100, nullable = false)
 	private String nome;
 	
 	@Column(length = 15)

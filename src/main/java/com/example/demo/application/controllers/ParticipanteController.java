@@ -17,6 +17,8 @@ import com.example.demo.application.dtos.ParticipanteRequestDto;
 import com.example.demo.application.dtos.ParticipanteResponseDto;
 import com.example.demo.domain.services.interfaces.ParticipanteDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/participantes")
 public class ParticipanteController {
@@ -25,12 +27,12 @@ public class ParticipanteController {
 	private ParticipanteDomainService participanteDomainService;
 	
 	@PostMapping
-	ParticipanteResponseDto post(@RequestBody ParticipanteRequestDto request) {
+	ParticipanteResponseDto post(@Valid @RequestBody ParticipanteRequestDto request) {
 		return participanteDomainService.cadastrarParticipante(request);
 	}
 	
 	@PutMapping("{id}")
-	ParticipanteResponseDto put(@PathVariable UUID id, @RequestBody ParticipanteRequestDto request) {
+	ParticipanteResponseDto put(@PathVariable UUID id, @Valid @RequestBody ParticipanteRequestDto request) {
 		return participanteDomainService.atualizarParticipante(id, request);
 	}
 	
