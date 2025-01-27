@@ -19,6 +19,7 @@ public interface EventoRepository extends JpaRepository<Evento, UUID> {
 	@Query("SELECT e FROM Evento e WHERE e.status = :status")
 	List<Evento> buscarPorStatus(@Param("status") Status status);
 
-	
 	long count();
+	
+	boolean existsByNome(String nome);
 }

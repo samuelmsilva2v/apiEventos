@@ -11,7 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice(basePackages = "com.example.demo.application.controllers")
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(IllegalArgumentException.class)

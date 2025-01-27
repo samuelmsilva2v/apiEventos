@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.application.dtos.DeleteParticipanteResponseDto;
 import com.example.demo.application.dtos.ParticipanteRequestDto;
 import com.example.demo.application.dtos.ParticipanteResponseDto;
 import com.example.demo.domain.services.interfaces.ParticipanteDomainService;
@@ -37,8 +38,8 @@ public class ParticipanteController {
 	}
 	
 	@DeleteMapping("{id}")
-	ParticipanteResponseDto delete(@PathVariable UUID id) {
-		return participanteDomainService.deletarParticipante(id);
+	DeleteParticipanteResponseDto delete(@PathVariable UUID id) {
+		return participanteDomainService.excluirParticipante(id);
 	}
 	
 	@GetMapping("{id}")
@@ -49,5 +50,20 @@ public class ParticipanteController {
 	@GetMapping
 	List<ParticipanteResponseDto> getAll() {
 		return participanteDomainService.consultarParticipantes();
+	}
+	
+	@GetMapping("/evento/{eventoId}")
+	List<ParticipanteResponseDto> getByEventoId(@PathVariable UUID eventoId) {
+		return participanteDomainService.consultarParticipantesPorEvento(eventoId);
+	}
+	
+	@DeleteMapping("/evento/{eventoId}/participante/{participanteId}")
+	String removeParticipanteFromEvento(@PathVariable UUID participanteId, @PathVariable UUID eventoId) {
+		return participanteDomainService.removerParticipanteDeEvento(participanteId, eventoId);
+	}
+	
+	@GetMapping("/evento/{eventoId}/count")
+	long countByEventoId(@PathVariable UUID eventoId) {
+		return participanteDomainService.contarParticipantesPorEvento(eventoId);
 	}
 }

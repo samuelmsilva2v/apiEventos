@@ -1,7 +1,7 @@
 package com.example.demo.domain.models.entities;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 import com.example.demo.domain.models.enums.Status;
@@ -24,7 +24,7 @@ public class Evento {
 	@Id
 	private UUID id;
 	
-	@Column(length = 50, nullable = false)
+	@Column(length = 50, nullable = false, unique = true)
 	private String nome;
 	private String descricao;
 	
@@ -47,5 +47,5 @@ public class Evento {
 	private Status status;
 	
 	@OneToMany(mappedBy = "evento")
-	private Set<Participante> participantes;
+	private List<Participante> participantes;
 }

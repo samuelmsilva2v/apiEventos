@@ -21,10 +21,10 @@ public class Participante {
 	@Column(length = 100, nullable = false)
 	private String nome;
 	
-	@Column(length = 15)
+	@Column(length = 15, nullable = false, unique = true)
 	private String telefone;
 	
-	@Column(length = 50, nullable = false)
+	@Column(length = 50, nullable = false, unique = true)
 	private String email;
 	
 	@ManyToOne

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.application.dtos.DeleteEventoResponseDto;
 import com.example.demo.application.dtos.EventoRequestDto;
 import com.example.demo.application.dtos.EventoResponseDto;
 import com.example.demo.domain.models.enums.Status;
@@ -41,8 +42,8 @@ public class EventoController {
 	}
 
 	@DeleteMapping("{id}")
-	EventoResponseDto delete(@PathVariable UUID id) {
-		return eventoDomainService.deletarEvento(id);
+	DeleteEventoResponseDto delete(@PathVariable UUID id) {
+		return eventoDomainService.excluirEvento(id);
 	}
 
 	@GetMapping("{id}")
