@@ -1,0 +1,46 @@
+networks:
+  apieventos-network:
+    driver: bridge
+
+services:
+  apieventos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - apieventos-network
+    depends_on:
+      - postgresql
+      - rabbitmq
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/eventodb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+
+  postgresql:
+    image: postgres:15
+    container_name: postgres_container
+    ports:
+      - "5432:5432"
+    networks:
+      - apieventos-network
+    environment:
+      POSTGRES_DB: eventodb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_container
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - apieventos-network
+
+volumes:
+  postgres_data:
